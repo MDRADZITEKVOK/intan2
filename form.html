@@ -1,0 +1,41 @@
+<!DOCTYPE html> <!-- untuk trace sama ada leh guna untuk device atau pn tidak -->
+<html>
+<head>
+
+<meta charset="utf-8"> <!-- untuk paparan screen sama ada full ataupn tidak -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="js/jquery.mobile.min.js"></script>
+
+</head>
+
+
+<body>
+
+<script>
+$( document ).ready(function() {
+  // Pengiraan menggunakan ajax
+  $('#hantar').click(function(){
+			$.ajax({
+			type: 'POST',
+			url: 'form.php',
+			data: $("#form1").serialize(),
+			success: function(data){
+				$('#try_ajax').html(data);
+				$('#try_ajax').show();
+				}
+			});	
+		});	
+	});
+
+</script>
+
+	<form action="form.php" method="post">
+	
+		NAMA : <input type="text" name="nama"> <br />
+		Variable 1: <input type="input" name="v1"> <br />
+		Variable 2: <input type="input" name="v2"> <br />
+		
+		<input type="submit" name="hantar" value="submit">
+	</form>
+</body>
+</html>
